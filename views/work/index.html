@@ -1,0 +1,26 @@
+<TMPL_var message>
+<div class="wrap">
+	<div class="content our-projects-content">
+		<span class="h2">НАШИ ПРОЕКТЫ</span>
+		<div class="our-projects-service after">
+		    <TMPL_foreach categories as category>
+			<a href="<TMPL_var category.url>" class="our-projects-block our-projects-block-content"></a>
+			</TMPL_foreach>
+		</div>
+		<div class="our-projects-service-links after">
+			<div class="first-line-link after">
+			    <TMPL_foreach tags as tag>
+			    <a href="<TMPL_var tag.url>"><TMPL_var tag.label></a>
+			    </TMPL_foreach>
+			</div>
+		</div>
+		<div class="clients-block-content after">
+		    <TMPL_foreach items as item>
+		    <div class="clients-block">
+		        <img src="<TMPL_var assetsUrl>/img/our-job-img/<TMPL_var item.name>.png" alt="">
+				<div class="clients-block-text"></div>
+		    </div>
+            </TMPL_foreach>
+		</div>
+	</div>
+</div>

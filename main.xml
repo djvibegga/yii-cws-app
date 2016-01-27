@@ -1,0 +1,83 @@
+<server name="jviba" host="127.0.0.1" port="9015">
+    <name value="jviba" />
+    <requestConcurrency value="100000"/>
+    <instance>
+        <count value="1"/>
+        <idleTimeout value="100000"/>
+    </instance>
+    <language value="en"/>
+    <languages>
+        <language name="en"/>
+        <language name="ru"/>
+    </languages>
+    <enableAuth value="true"/>
+    <enableSessions value="true"/>
+    <components>
+        <templateEngine>
+            <maxHandlers value="150" />
+            <maxArgStackSize value="10000" />
+            <maxCodeStackSize value="10000" />
+            <maxSteps value="20000" />
+        </templateEngine>
+        <db>
+            <cdn value="mysql:host=127.0.0.1;port=3306;dbname=jvibacom"/>
+            <username value="root"/>
+            <password value=""/>
+        </db>
+        <urlManager>
+            <urlFormat value="path"/>
+            <showScriptName value="false"/>
+            <storeLanguageInCookies value="true"/>
+        </urlManager>
+        <session>
+            <autoOpen value="true" />
+            <gcTimeout value="6" />
+        </session>
+        <assetManager>
+            <linkAssets value="true"/>
+        </assetManager>
+        <securityManager>
+            <validationKey value="Pegul7ui"/>
+            <encryptionKey value="Joo9or1A"/>
+        </securityManager>
+        <user>
+            <allowAutoLogin value="true"/>
+            <autoRenewCookie value="true"/>
+        </user>
+        <clientScript>
+            <packages>
+                <package name="main">
+                    <basePath value="application.assets" />
+                    <js>
+                        <file path="js/bootstrap.js" />
+                        <file path="js/scripts.js" />
+                    </js>
+                    <css>
+                        <file path="css/style.css" />
+                    </css>
+                    <depends>
+                        <package name="jquery" />
+                    </depends>
+                </package>
+                <package name="page.contacts">
+                    <basePath value="application.assets" />
+                    <js>
+                        <file path="js/map.js" />
+                    </js>
+                    <depends>
+                        <package name="jquery" />
+                    </depends>
+                </package>
+                <package name="page.home">
+                    <basePath value="application.assets" />
+                    <css>
+                        <file path="css/bootstrap.css" />
+                    </css>
+                    <depends>
+                        <package name="main" />
+                    </depends>
+                </package>
+            </packages>
+        </clientScript>
+    </components>
+</server>

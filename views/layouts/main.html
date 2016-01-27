@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="<TMPL_var assetsUrl>/img/emb-mid.png">
+	<title>Главная</title>
+</head>
+<body>
+	<!-- <div class="background"> -->
+		<div class="wrap-all main-body">
+			<div class="wrap wrap-pre-head after">
+				<div class="content">
+					<div class="fl-l">
+						<a href="/">
+							<img alt="" class="head-logo">
+						</a>
+					</div>
+					<div class="fl-r">
+						<div class="head-menu">
+							<ul>
+								<li>
+									<a href="/" class="active">Главная</a>
+								</li>
+								<li>
+									<a href="/page/about">О нас</a>
+								</li>
+								<li>
+									<a href="<TMPL_var portfolioUrl>">Наши проекты</a>
+								</li>
+								<li>
+									<a href="/page/services">Наши услуги</a>
+								</li>
+								<li>
+									<a href="http://blog.jviba.com/">Блог</a>
+								</li>
+								<li>
+									<a href="/page/contacts">Контакты</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrap wrap-header after wrap-header-anim wrap-header-anim-hover">
+				<div class="content">
+					<div class="lang after">
+                        <TMPL_foreach langs as language>
+                        <TMPL_if (lang == language.label)>
+                        <a href="<TMPL_var language.url>" class="active"><TMPL_var language.label></a>
+                        <TMPL_else>
+                        <a href="<TMPL_var language.url>"><TMPL_var language.label></a>
+                        </TMPL_if>
+                        </TMPL_foreach>
+                    </div>
+					<div class="block-hide">
+						<span class="h1 color-white clear h1-hide">
+							Успешные сайты делают
+							<span class="money">
+								деньги
+							</span>
+						</span>
+						<span class="h2 color-white">
+							Ваш проект - это ничто иное как проекция бизнеса в виртуальную реальность интернета. 
+						</span>
+						<p class="text-align-c color-white">
+							Стало интерестно КАК ЭТО УСТРОЕНО?
+						</p>
+						<div class="big-button">
+							<a href="<TMPL_var portfolioUrl>">ЖМИ</a>
+						</div>
+						<span class="h4 text-align-c color-yellow">
+							<a href="<TMPL_var assetsUrl>/media/presentation_<TMPL_var lang>.pdf" class="color-yellow wrap-for-big-but">Скачать презентацию
+							</a>	
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<TMPL_var content>
+			
+		</div>
+			
+		<div class="wrap-footer">
+			<div class="wrap">
+				<div class="content">
+					<div class="fl-l">
+						<a href="#">
+							<img alt="" class="footer-logo">
+						</a>
+					</div>
+					<div class="fl-r">
+						<ul>
+							<li><a href="/page/about">О НАС</a></li>
+							<li><a href="<TMPL_var portfolioUrl>">НАШИ ПРОЕКТЫ</a></li>
+							<li><a href="/page/services">НАШИ УСЛУГИ</a></li>
+							<li><a href="http://blog.jviba.com/">БЛОГ</a></li>
+							<li><a href="/page/contacts">КОНТАКТЫ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- </div> -->
+
+</body>
+</html>

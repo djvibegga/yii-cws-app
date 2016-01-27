@@ -1,0 +1,10 @@
+IndexIgnore *
+DirectoryIndex jviba
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ jviba/$1
+
+RewriteRule ^$ jviba [L]
+RewriteRule ^/$ jviba [L]

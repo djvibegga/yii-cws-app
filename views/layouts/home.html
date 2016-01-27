@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="<TMPL_var assetsUrl>/img/emb-mid.png">
+	<title>Главная</title>
+</head>
+<body>
+	<!-- <div class="background"> -->
+		<div class="wrap-all main-body">
+			<div class="wrap wrap-pre-head after">
+				<div class="content">
+					<div class="fl-l">
+						<a href="/">
+							<img alt="" class="head-logo">
+						</a>
+					</div>
+					<div class="fl-r margin-top-10px">
+						<div class="head-menu">
+							<ul>
+								<li>
+									<a href="/" class="active">Главная</a>
+								</li>
+								<li>
+									<a href="/page/about">О нас</a>
+								</li>
+								<li>
+									<a href="<TMPL_var portfolioUrl>">Наши проекты</a>
+								</li>
+								<li>
+									<a href="/page/services">Наши услуги</a>
+								</li>
+								<li>
+									<a href="http://blog.jviba.com/">Блог</a>
+								</li>
+								<li>
+									<a href="/page/contacts">Контакты</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrap wrap-header after">
+				<div class="content">
+					<div class="lang after">
+					    <TMPL_foreach langs as language>
+                        <TMPL_if (lang == language.label)>
+                        <a href="<TMPL_var language.url>" class="active"><TMPL_var language.label></a>
+                        <TMPL_else>
+                        <a href="<TMPL_var language.url>"><TMPL_var language.label></a>
+                        </TMPL_if>
+                        </TMPL_foreach>
+					</div>
+					<div>
+						<span class="h1 color-white clear h1-hide">
+							Успешные сайты делают
+							<span class="money">
+								деньги
+							</span>
+						</span>
+						<span class="h2 color-white">
+							Ваш проект - это ничто иное как проекция бизнеса в виртуальную реальность интернета. 
+						</span>
+						<p class="text-align-c color-white">
+							Стало интерестно КАК ЭТО УСТРОЕНО?
+						</p>
+						<div class="big-button">
+							<a href="<TMPL_var portfolioUrl>">ЖМИ</a>
+						</div>
+						<span class="h4 text-align-c color-yellow">
+							<a href="<TMPL_var assetsUrl>/media/presentation_{<TMPL_var lang>}.pdf" class="color-yellow wrap-for-big-but">Скачать презентацию
+							</a>	
+						</span>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+			    <TMPL_var content>
+			</div>
+			
+			
+				<div class="pre-footer wrap">
+					<div class="contact-form-content content">
+						<span class="h2">
+							ОФОРМИТЬ ОНЛАЙН ЗАКАЗ
+						</span>
+						<span class="text-align-c h4">
+							Пожалуйста, заполните все поля — это поможет нам точнее понять задачу и вовремя связаться с вами.
+						</span>
+						<form action="/order/create">
+							<input type="text" placeholder="Контактное лицо">
+							<input type="text" placeholder="Электронный адрес">
+							<input type="text"/ placeholder="Мобильный телефон">
+
+							<textarea name="" id="" cols="30" rows="10" placeholder="Текст сообщения"></textarea>
+							<div class="form-buttons after">
+								<button>Отправить</button>
+							</div>
+						</form>
+					</div>
+					<div class="adress-with-news after content">
+						<div class="fl-l">
+							<div class="adres-block">
+								<span class="marker adres-img"></span>
+								<p>Адрес: 83001, Украина, г.Донецк<br/>ул. Линина 123, офис 102</p>
+							</div>
+							<div class="adres-block">
+								<span class="tel adres-img"></span>
+								<p class="width-200">Телефон: +38 050 845-45-78 <br/>+38 063 845-45-79</p>
+							</div>
+							<div class="adres-block">
+								<span class="im adres-img"></span>
+								<p class="width-150">
+								    E-mail: <a href="mailto:contacts@jviba.com"><span>contacts@jviba.com</span></a>
+								    <br/>
+								    Skype: <a href="skype:contact.jviba?call"><span>contact.jviba</span></a>
+								</p>
+							</div>
+							<div class="social-buttons after">
+								<div class="social-button facebook"></div>
+								<div class="social-button vk"></div>
+								<div class="social-button twitter"></div>
+								<div class="social-button google-plus"></div>
+								<div class="social-button odno"></div>
+								<div class="social-button rss"></div>
+							</div>
+						</div>
+						<div class="fl-r">
+							<span class="h2">Последние новости</span>
+							<div class="last-news">
+								<p>
+									Асинхронное изменение сессии в 
+									<span>#PHP</span>
+									<a href="#">
+										http://blog.jviba.com/ru/web/asinhronnoe-v-php
+									</a><br/>
+									<span class="date">27.05.2014</span>
+								</p>
+							</div>
+							<div class="last-news">
+								<p>
+									Асинхронное изменение сессии в 
+									<span>#PHP</span>
+									<a href="#">
+										http://blog.jviba.com/ru/web/asinhronnoe-v-php
+									</a><br/>
+									<span class="date">27.05.2014</span>
+								</p>
+							</div>
+							<div class="last-news">
+								<p>
+									Асинхронное изменение сессии в 
+									<span>#PHP</span>
+									<a href="#">
+										http://blog.jviba.com/ru/web/asinhronnoe-v-php
+									</a><br/>
+									<span class="date">27.05.2014</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		<div class="wrap-footer">
+			<div class="wrap">
+				<div class="content">
+					<div class="fl-l">
+						<a href="#">
+							<img alt="" class="footer-logo">
+						</a>
+					</div>
+					<div class="fl-r">
+						<ul>
+							<li><a href="/page/about">О НАС</a></li>
+							<li><a href="<TMPL_var portfolioUrl>">НАШИ ПРОЕКТЫ</a></li>
+							<li><a href="/page/services">НАШИ УСЛУГИ</a></li>
+							<li><a href="http://blog.jviba.com/">БЛОГ</a></li>
+							<li><a href="/page/contacts">КОНТАКТЫ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- </div> -->
+
+</body>
+</html>
