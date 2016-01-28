@@ -30,9 +30,15 @@ void MainLayout::run() throw (CException)
 	viewData["assetsUrl"] = dynamic_cast<CAssetManager*>(app->getComponent("assetManager"))
 		->getPublishedUrl(Cws::getPathOfAlias("application.assets"));
 
-	TRouteStruct portfolioRoute("work/index");
 	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(app->getComponent("urlManager"));
-	viewData["portfolioUrl"] = urlManager->createUrl(portfolioRoute);
+	viewData["pagesUrl"] = urlManager->createUrl("page/index");
+	viewData["loginUrl"] = urlManager->createUrl("site/login");
+	viewData["amUrl"] = urlManager->createUrl("site/assetManager");
+	viewData["sessionsUrl"] = urlManager->createUrl("site/session");
+	viewData["cookiesUrl"] = urlManager->createUrl("site/cookies");
+	viewData["securityUrl"] = urlManager->createUrl("site/security");
+	viewData["dbUrl"] = urlManager->createUrl("site/db");
+	viewData["translateUrl"] = urlManager->createUrl("site/translate");
 
 	dynamic_cast<CClientScript*>(Cws::app()->getComponent("clientScript"))
 		->registerPackage("main");

@@ -21,9 +21,7 @@
 
 #include "components/DbConnection.h"
 #include "controllers/SiteController.h"
-#include "controllers/WorkController.h"
-#include "controllers/PageController.h"
-
+#include "components/PageUrlRule.h"
 
 Application::Application(const string &configPath, int argc, char * const argv[])
 : CWebApplication(configPath, argc, argv)
@@ -43,9 +41,8 @@ CUrlManager * Application::createUrlManager()
 {
 	CUrlManager * manager = CWebApplication::createUrlManager();
 	manager->addRule(new CUrlRule("site/index", "/"));
-	manager->addRule(new CUrlRule("work/index", "portfolio/<category:\\w+>"));
-	manager->addRule(new CUrlRule("work/view", "portfolio/view/<name:\\w+>*"));
-	manager->addRule(new CUrlRule("work/index", "portfolio*"));
+	manager->addRule(new CUrlRule("page/index", "pages"));
+	manager->addRule(new PageUrlRule());
 	manager->addRule(new CUrlRule("page/view", "page/<name:\\w+>*"));
 	return manager;
 }
@@ -87,12 +84,6 @@ void Application::registerComponents()
 
 	SiteController * siteController = new SiteController(this);
 	siteController->init();
-
-	CController * workController = new WorkController(this);
-	workController->init();
-
-	CController * pageController = new PageController(this);
-	pageController->init();
 }
 
 

@@ -14,6 +14,7 @@
 #include <db/schema/CDbCommandBuilder.h>
 #include <web/CAssetManager.h>
 #include <web/CClientScript.h>
+#include <web/CUrlManager.h>
 #include <web/CWebUser.h>
 #include <utils/CMap.h>
 #include <boost/assign/list_of.hpp>
@@ -21,7 +22,6 @@
 #include "MainLayout.h"
 #include "MyUserIdentity.h"
 #include "models/Page.h"
-#include "models/Object.h"
 
 SiteController::SiteController(CModule * parent)
 : CController("site", parent)
@@ -57,7 +57,6 @@ void SiteController::actionIndex(CHttpRequest * const request, CHttpResponse * r
 
 	CDT viewData;
 	viewData["assetsUrl"] = assetsUrl;
-	setLayout(TViewPtr(new MainLayout(this, "application.views.layouts.home")));
 
 	render("index", viewData);
 }
@@ -76,8 +75,6 @@ void SiteController::actionAssetManager(CHttpRequest * const request, CHttpRespo
 
 	cs->registerPackage("test");
 	cs->registerPackage("subtest");
-	cs->registerPackage("bbq");
-	cs->registerPackage("cookie");
 
 	cs->registerScript("test", "alert('yes');", CClientScript::POS_READY);
 
@@ -121,7 +118,7 @@ void SiteController::actionCookies(CHttpRequest * const request, CHttpResponse *
 void SiteController::actionSecurity(CHttpRequest * const request, CHttpResponse * response) throw (CException)
 {
 	CSecurityManager * manager = dynamic_cast<CSecurityManager*>(Cws::app()->getComponent("securityManager"));
-	string source = "test stupid lorem ipsum";
+	string source = "test string to check security manager";
 	string encrypted = manager->encrypt(source);
 	string decrypted = manager->decrypt(encrypted);
 	*response << "source: " << source << "<br>" << "encrypted: " << encrypted << "<br>"
@@ -137,30 +134,34 @@ void SiteController::actionSecurity(CHttpRequest * const request, CHttpResponse 
 void SiteController::actionLogin(CHttpRequest * const request, CHttpResponse * response) throw (CException)
 {
 	CWebUser * user = dynamic_cast<CWebUser*>(Cws::app()->getComponent("user"));
+	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(Cws::app()->getComponent("urlManager"));
 
 	if (!user->getIsGuest()) {
-		*response << _("user is already logged");
+		*response << _t("user is already logged... ")
+				  << _("<a href=\"") << urlManager->createUrl("site/logout") << _("\">")
+				  << _t("Logout")
+				  << _("</a>");
 		return;
 	}
 
 	MyUserIdentity identity("admin", "admin");
 	if (!identity.authenticate()) {
-		*response << _("failure auth");
+		*response << _t("failure auth");
 		return;
 	}
 	if (!user->login(identity, 1220)) {
-		*response << _("failure login");
+		*response << _t("failure login");
 		return;
 	}
 
-	*response << _("Welcome, ") << user->getName() << _("!");
+	*response << _t("Welcome, ") << user->getName() << _("!");
 }
 
 void SiteController::actionLogout(CHttpRequest * const request, CHttpResponse * response) throw (CException)
 {
 	CWebUser * user = dynamic_cast<CWebUser*>(Cws::app()->getComponent("user"));
 	user->logout();
-	*response << _("Bye bye...");
+	response->redirect("/");
 }
 
 void SiteController::actionDb(CHttpRequest * const request, CHttpResponse * response) throw (CException)
@@ -199,7 +200,7 @@ void SiteController::actionDb(CHttpRequest * const request, CHttpResponse * resp
 //
 //	TActiveRecordList tags = Tag::model()->findAll();
 //
-//	CApplication * app = Cws::app();
+    CApplication * app = Cws::app();
 //
 //	CDT work;
 //	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(app->getComponent("urlManager"));
@@ -246,7 +247,7 @@ void SiteController::actionDb(CHttpRequest * const request, CHttpResponse * resp
 
 void SiteController::actionTranslate(CHttpRequest * const request, CHttpResponse * response) throw (CException)
 {
-	_string message = (_f(_t(_("test {1}"))) % 15).str();
+	_string message = (_f(_t("test {1}")) % 15).str();
 
 	*response << _to_utf8(message);
 }

@@ -1,5 +1,5 @@
-<server name="jviba" host="127.0.0.1" port="9015">
-    <name value="jviba" />
+<server name="yii-cws-app" host="127.0.0.1" port="9015">
+    <name value="yii-cws-app" />
     <requestConcurrency value="100000"/>
     <instance>
         <count value="1"/>
@@ -20,7 +20,7 @@
             <maxSteps value="20000" />
         </templateEngine>
         <db>
-            <cdn value="mysql:host=127.0.0.1;port=3306;dbname=jvibacom"/>
+            <cdn value="mysql:host=127.0.0.1;port=3306;dbname=yii_cws_app"/>
             <username value="root"/>
             <password value=""/>
         </db>
@@ -28,6 +28,7 @@
             <urlFormat value="path"/>
             <showScriptName value="false"/>
             <storeLanguageInCookies value="true"/>
+            <appendLanguageWhenItIsDefault value="false"/>
         </urlManager>
         <session>
             <autoOpen value="true" />
@@ -46,35 +47,35 @@
         </user>
         <clientScript>
             <packages>
+                <package name="bootstrap">
+                    <basePath value="application.assets" />
+                    <js>
+                        <file path="js/bootstrap.min.js" />
+                    </js>
+                    <css>
+                        <file path="css/bootstrap.min.css" />
+                    </css>
+                    <depends>
+                        <package name="jquery" />
+                    </depends>
+                </package>
                 <package name="main">
                     <basePath value="application.assets" />
                     <js>
-                        <file path="js/bootstrap.js" />
-                        <file path="js/scripts.js" />
                     </js>
                     <css>
-                        <file path="css/style.css" />
                     </css>
                     <depends>
                         <package name="jquery" />
+                        <package name="bootstrap" />
                     </depends>
                 </package>
-                <package name="page.contacts">
+                <package name="page.static">
                     <basePath value="application.assets" />
                     <js>
-                        <file path="js/map.js" />
                     </js>
                     <depends>
                         <package name="jquery" />
-                    </depends>
-                </package>
-                <package name="page.home">
-                    <basePath value="application.assets" />
-                    <css>
-                        <file path="css/bootstrap.css" />
-                    </css>
-                    <depends>
-                        <package name="main" />
                     </depends>
                 </package>
             </packages>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="<TMPL_var assetsUrl>/img/favicon.png">
+    <title>Home</title>
+</head>
+<body>
+    <div class="wrap-all main-body">
+        <div class="wrap wrap-pre-head after">
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">YII Compiled web server Sample Application</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/pages">Pages</a></li>
+                    <li><a href="/pages/about">About Page</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="wrap wrap-header after">
+            <div class="content">
+                <div class="lang after">
+                    <TMPL_foreach langs as language>
+                       <TMPL_if (lang == language.label)>
+                       <a href="<TMPL_var language.url>" class="active"><TMPL_var language.label></a>
+                       <TMPL_else>
+                       <a href="<TMPL_var language.url>"><TMPL_var language.label></a>
+                       </TMPL_if>
+                       </TMPL_foreach>
+                </div>
+            </div>
+        </div>
+        
+        <div id="content">
+            <TMPL_var content>
+        </div>
+        
+        
+        <div class="pre-footer wrap">
+            <div class="contact-form-content content">
+                <span class="h2">
+                    ОФОРМИТЬ ОНЛАЙН ЗАКАЗ
+                </span>
+                <span class="text-align-c h4">
+                    Пожалуйста, заполните все поля — это поможет нам точнее понять задачу и вовремя связаться с вами.
+                </span>
+                <form action="/order/create">
+                    <input type="text" placeholder="Контактное лицо">
+                    <input type="text" placeholder="Электронный адрес">
+                    <input type="text"/ placeholder="Мобильный телефон">
+
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Текст сообщения"></textarea>
+                    <div class="form-buttons after">
+                        <button>Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+                
+    </div>
+            
+    <div class="wrap-footer">
+        <div class="wrap">
+            <div class="content">
+                <div class="fl-l">
+                    <a href="#">
+                        <img alt="" class="footer-logo">
+                    </a>
+                </div>
+                <div class="fl-r">
+                    <ul>
+                        <li><a href="/page/about">О НАС</a></li>
+                        <li><a href="<TMPL_var portfolioUrl>">НАШИ ПРОЕКТЫ</a></li>
+                        <li><a href="/page/services">НАШИ УСЛУГИ</a></li>
+                        <li><a href="http://blog.jviba.com/">БЛОГ</a></li>
+                        <li><a href="/page/contacts">КОНТАКТЫ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
