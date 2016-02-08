@@ -2,42 +2,115 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YII CWS APP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-28 14:07+0300\n"
-"PO-Revision-Date: 2016-01-28 14:13+0300\n"
+"POT-Creation-Date: 2016-02-08 21:17+0300\n"
+"PO-Revision-Date: 2016-02-08 21:18+0300\n"
 "Last-Translator: Eugeniy Marilev <djvibegga@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _t;gettext;gettext_noop;_t(_\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Ukrainian\n"
+"X-Poedit-KeywordsList: _t;gettext;gettext_noop\n"
+"X-Poedit-Basepath: ./../../../\n"
+"X-Poedit-Language: Russian\n"
 "X-Poedit-Country: UKRAINE\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: views\n"
 
-#: src/controllers/SiteController.cpp:140
+#: src/controllers/SiteController.cpp:139
 msgid "user is already logged... "
 msgstr "пользователь уже авторизован"
 
-#: src/controllers/SiteController.cpp:142
+#: src/controllers/SiteController.cpp:141
 msgid "Logout"
 msgstr "Выйти"
 
-#: src/controllers/SiteController.cpp:149
+#: src/controllers/SiteController.cpp:148
 msgid "failure auth"
 msgstr "ошибка аутентификации"
 
-#: src/controllers/SiteController.cpp:153
+#: src/controllers/SiteController.cpp:152
 msgid "failure login"
 msgstr "ошибка входа"
 
-#: src/controllers/SiteController.cpp:157
+#: src/controllers/SiteController.cpp:193
+msgid "test {1}"
+msgstr "тест {1}"
+
+#: views/site/index.html:1
+msgid "You are on the home page"
+msgstr "Вы на домашней странице"
+
+#: views/site/cookies.html:1
+msgid "I am \"site/cookies\" action."
+msgstr "Я сценарий \"site/cookies\"."
+
+#: views/site/cookies.html:2
+msgid "Here is active cookie[sessid]"
+msgstr "Это активное значение cookie[sessid]"
+
+#: views/site/cookies.html:3
+msgid "Note! Server has removed \"lang\" cookie."
+msgstr "Внимание! Сервер удалил куки \"lang\"."
+
+#: views/site/session.html:1
+msgid "I am \"site/session\" action."
+msgstr "Я сценарий \"site/session\"."
+
+#: views/site/session.html:2
+msgid "Here is active session ID"
+msgstr "Это активный ID сессии"
+
+#: views/site/session.html:3
+msgid "Here is active session data[key]"
+msgstr "Это активные данные сессии data[key]"
+
+#: views/site/db.html:2
+msgid "Select page to view"
+msgstr "Выберите страницу для просмотра"
+
+#: views/site/login.html:1
 msgid "Welcome, "
 msgstr "Здравствуйте"
 
-#: src/controllers/SiteController.cpp:250
-msgid "test {1}"
-msgstr "тест {1}"
+#: views/layouts/main.html:26
+msgid "Asset Manager"
+msgstr "Менеджер ассетов"
+
+#: views/layouts/main.html:27
+msgid "Sessions"
+msgstr "Сессии"
+
+#: views/layouts/main.html:28
+msgid "Cookies"
+msgstr "Куки"
+
+#: views/layouts/main.html:29
+msgid "Security"
+msgstr "Безопасность"
+
+#: views/layouts/main.html:30
+msgid "Database"
+msgstr "СУБД"
+
+#: views/layouts/main.html:31
+msgid "Contacts"
+msgstr "Контакты"
+
+#: views/layouts/main.html:32
+msgid "Translation with params"
+msgstr "Перевод с параметрами"
+
+#: views/layouts/main.html:33
+msgid "Bad Request Url"
+msgstr "Несуществующий адрес"
+
+#: views/layouts/main.html:37
+msgid "Language"
+msgstr "Язык"
+
+#: views/layouts/main.html:49
+msgid "Login"
+msgstr "Войти"
 

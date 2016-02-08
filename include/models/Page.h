@@ -26,7 +26,7 @@ public:
 	Page(const string & scenario = "", CDbConnection * connection = 0);
 	Page(const Page & other);
 	virtual ~Page();
-	TActiveRecordPtr findByName(string & name);
+	TActiveRecordPtr findByName(const string & name);
 };
 
 #endif /* PAGE_H_ */

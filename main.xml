@@ -13,11 +13,15 @@
     <enableAuth value="true"/>
     <enableSessions value="true"/>
     <components>
+        <log>
+            <enabled value="true" />
+        </log>
         <templateEngine>
             <maxHandlers value="150" />
             <maxArgStackSize value="10000" />
             <maxCodeStackSize value="10000" />
             <maxSteps value="20000" />
+            <i18nDefaultDomain value="yii-cws-app" />
         </templateEngine>
         <db>
             <cdn value="mysql:host=127.0.0.1;port=3306;dbname=yii_cws_app"/>

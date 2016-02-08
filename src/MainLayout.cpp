@@ -10,6 +10,7 @@
 #include <web/CUrlManager.h>
 #include <web/CClientScript.h>
 #include <base/Cws.h>
+#include "models/Page.h"
 
 MainLayout::MainLayout(const CBaseController * owner, const string & viewName)
 : CLayoutView(owner),
@@ -31,14 +32,20 @@ void MainLayout::run() throw (CException)
 		->getPublishedUrl(Cws::getPathOfAlias("application.assets"));
 
 	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(app->getComponent("urlManager"));
-	viewData["pagesUrl"] = urlManager->createUrl("page/index");
+	viewData["badRequestUrl"] = urlManager->createUrl("nonexisturl");
 	viewData["loginUrl"] = urlManager->createUrl("site/login");
-	viewData["amUrl"] = urlManager->createUrl("site/assetManager");
+	viewData["amUrl"] = urlManager->createUrl("site/am");
 	viewData["sessionsUrl"] = urlManager->createUrl("site/session");
 	viewData["cookiesUrl"] = urlManager->createUrl("site/cookies");
 	viewData["securityUrl"] = urlManager->createUrl("site/security");
 	viewData["dbUrl"] = urlManager->createUrl("site/db");
 	viewData["translateUrl"] = urlManager->createUrl("site/translate");
+
+	TRouteStruct contactsRoute;
+	contactsRoute.path = "page/view";
+	TActiveRecordPtr contactsPtr = Page::model()->findByName("Contacts Us");
+	contactsRoute.params["id"] = CStringUtils::fromULong(dynamic_cast<Page*>(contactsPtr.get())->id);
+	viewData["contactsUrl"] = urlManager->createUrl(contactsRoute);
 
 	dynamic_cast<CClientScript*>(Cws::app()->getComponent("clientScript"))
 		->registerPackage("main");
@@ -60,6 +67,8 @@ void MainLayout::run() throw (CException)
 		lang["url"] = url;
 		viewData["langs"].PushBack(lang);
 	}
+
+	viewData["loginButton"] = "Login";
 
 	render(_viewName, viewData);
 }

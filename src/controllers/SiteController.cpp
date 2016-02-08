@@ -108,7 +108,6 @@ void SiteController::actionCookies(CHttpRequest * const request, CHttpResponse *
 		viewData["sessid"] = cookies["sessid"].value;
 	}
 
-	cookies.add(CHttpCookie("lang", "ru", "", "/"));
 	cookies.add(CHttpCookie("sessid", session->getSessionId(), "", "/", time(0) + 100));
 	cookies.remove("lang");
 
@@ -154,7 +153,9 @@ void SiteController::actionLogin(CHttpRequest * const request, CHttpResponse * r
 		return;
 	}
 
-	*response << _t("Welcome, ") << user->getName() << _("!");
+	CDT viewData;
+	viewData["username"] = _to_utf8(user->getName());
+	render("login", viewData);
 }
 
 void SiteController::actionLogout(CHttpRequest * const request, CHttpResponse * response) throw (CException)
@@ -167,82 +168,24 @@ void SiteController::actionLogout(CHttpRequest * const request, CHttpResponse * 
 void SiteController::actionDb(CHttpRequest * const request, CHttpResponse * response) throw (CException)
 {
 	CDbCriteria criteria;
-	CDT viewData;
-//	workCriteria.join = "INNER JOIN article_revision `ar` ON (`ar`.article_id = `t`.id AND `ar`.revision_type = 2)";
-//	string categoryParam = request->getParam("category");
-//	if (!categoryParam.empty()) {
-//		CDbCriteria criteria;
-//		criteria.compare("name", categoryParam);
-//		ArticleCategory * categoryModel = dynamic_cast<ArticleCategory*>(ArticleCategory::model()->find(criteria).get());
-//		if (categoryModel) {
-//			workCriteria.join += " INNER JOIN article_revision_article_category `arac` ON (`arac`.article_revision_id = `ar`.id)";
-//			workCriteria.compare("`arac`.article_category_id", categoryModel->id);
-//		}
-//		workCriteria.group = "`t`.id";
-//	}
-//	string tagParam = request->getParam("tag");
-//	if (!tagParam.empty()) {
-//		Tag * tagModel = dynamic_cast<Tag*>(Tag::model()->findByName(tagParam).get());
-//		if (tagModel) {
-//			workCriteria.join += " INNER JOIN article_revision_object_tag `arot` ON (`arot`.article_revision_id = `ar`.id)"
-//				" INNER JOIN article_tag `at` ON (`arot`.object_tag_id = `at`.object_id)";
-//			workCriteria.compare("`at`.object_id", tagModel->objectId);
-//		}
-//		workCriteria.group = "`t`.id";
-//	}
-//
-//	workCriteria.select = boost::assign::list_of ("t.*");
-//	TActiveRecordList items = Article::model()->findAll(workCriteria);
-//
-//	CDbCriteria categoryCriteria;
-//	categoryCriteria.order = "`index` ASC";
-//	TActiveRecordList categories = ArticleCategory::model()->findAll(categoryCriteria);
-//
-//	TActiveRecordList tags = Tag::model()->findAll();
-//
-    CApplication * app = Cws::app();
-//
-//	CDT work;
-//	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(app->getComponent("urlManager"));
-//	viewData["items"] = CDT();
-//	for (TActiveRecordList::iterator iter = items.begin(); iter != items.end(); ++iter) {
-//		Article * item = dynamic_cast<Article*>(iter->get());
-//		work["id"] = item->id;
-//		work["name"] = item->name;
-//		TRouteStruct route("work/view");
-//		route.params["name"] = item->name;
-//		work["url"] = urlManager->createUrl(route);
-//		viewData["items"].PushBack(work);
-//	}
-//
-//	CDT category;
-//	for (TActiveRecordList::iterator iter = categories.begin(); iter != categories.end(); ++iter) {
-//		ArticleCategory * item = dynamic_cast<ArticleCategory*>(iter->get());
-//		category["id"] = item->id;
-//		category["name"] = item->name;
-//		category["label"] = _to_utf8(item->label);
-//		TRouteStruct route("work/index");
-//		route.params["category"] = item->name;
-//		category["url"] = urlManager->createUrl(route);
-//		viewData["categories"].PushBack(category);
-//	}
-//
-//	CDT tag;
-//	for (TActiveRecordList::iterator iter = tags.begin(); iter != tags.end(); ++iter) {
-//		Tag * item = dynamic_cast<Tag*>(iter->get());
-//		tag["id"] = item->id;
-//		tag["name"] = item->name;
-//		tag["label"] = _to_utf8(item->label);
-//		TRouteStruct route("work/index");
-//		route.params["tag"] = item->name;
-//		tag["url"] = urlManager->createUrl(route);
-//		viewData["tags"].PushBack(tag);
-//	}
+	CDT viewData, page;
+	CApplication * app = Cws::app();
+	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(app->getComponent("urlManager"));
+	TActiveRecordList pages = Page::model()->findAll(criteria);
+
+    viewData["pages"] = CDT();
+    for (TActiveRecordList::iterator iter = pages.begin(); iter != pages.end(); ++iter) {
+    	Page * item = dynamic_cast<Page*>(iter->get());
+    	page["id"] = item->id;
+    	page["name"] = item->name;
+    	page["url"] = urlManager->createUrl(item->url);
+    	viewData["pages"].PushBack(page);
+    }
 
 	viewData["assetsUrl"] = dynamic_cast<CAssetManager*>(app->getComponent("assetManager"))
 		->getPublishedUrl(Cws::getPathOfAlias("application.assets"));
 
-	render("index", viewData);
+	render("db", viewData);
 }
 
 void SiteController::actionTranslate(CHttpRequest * const request, CHttpResponse * response) throw (CException)

@@ -1,0 +1,9 @@
+<div>
+    <p><TMPL_var gettext("Select page to view")>:</p>
+</div>
+
+<ul>
+<TMPL_foreach pages as page>
+    <li><a href="<TMPL_var page.url>" class="page-link"><TMPL_var page.name></a></li>
+</TMPL_foreach>
+</ul>

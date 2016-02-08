@@ -21,6 +21,7 @@
 
 #include "components/DbConnection.h"
 #include "controllers/SiteController.h"
+#include "controllers/PageController.h"
 #include "components/PageUrlRule.h"
 
 Application::Application(const string &configPath, int argc, char * const argv[])
@@ -41,7 +42,8 @@ CUrlManager * Application::createUrlManager()
 {
 	CUrlManager * manager = CWebApplication::createUrlManager();
 	manager->addRule(new CUrlRule("site/index", "/"));
-	manager->addRule(new CUrlRule("page/index", "pages"));
+	manager->addRule(new CUrlRule("site/am", "am"));
+	manager->addRule(new CUrlRule("site/db", "db"));
 	manager->addRule(new PageUrlRule());
 	manager->addRule(new CUrlRule("page/view", "page/<name:\\w+>*"));
 	return manager;
@@ -84,13 +86,16 @@ void Application::registerComponents()
 
 	SiteController * siteController = new SiteController(this);
 	siteController->init();
+
+	PageController * pageController = new PageController(this);
+	pageController->init();
 }
 
 
 void Application::logStdout(CEvent & event)
 {
-	SLogElement logItem = *(SLogElement*)(event.params["logItem"]);
-	if (logItem.level == CLogger::LEVEL_ERROR) {
-		cout << "[" << logItem.time << "] [" << logItem.category << "] " << logItem.message << endl;
+	SLogElement * logItem = (SLogElement*)(event.params["logItem"]);
+	if (logItem->level == CLogger::LEVEL_ERROR) {
+		cout << "[" << logItem->time << "] [" << logItem->category << "] " << logItem->message << endl;
 	}
 }

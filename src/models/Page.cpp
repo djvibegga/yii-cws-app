@@ -51,9 +51,10 @@ Page::~Page()
 {
 }
 
-TActiveRecordPtr Page::findByName(string & name)
+TActiveRecordPtr Page::findByName(const string & name)
 {
 	CDbCriteria criteria;
-	criteria.compare("t.name", name);
+	string pageName = name;
+	criteria.compare("t.name", pageName);
 	return find(criteria);
 }

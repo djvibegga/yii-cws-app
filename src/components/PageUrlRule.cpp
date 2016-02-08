@@ -30,7 +30,7 @@ string PageUrlRule::createUrl(
 
 	CTablePrimaryKey pk("id", found->second);
 	TActiveRecordPtr ptr = Page::model()->findByPk(pk);
-	if (ptr.get() == 0) {
+	if (ptr.get() != 0) {
 		return (dynamic_cast<Page*>(ptr.get()))->url;
 	}
 
