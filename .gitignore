@@ -17,3 +17,4 @@ protected/vendors/*
 /Debug/
 /Release/
 core
+*~

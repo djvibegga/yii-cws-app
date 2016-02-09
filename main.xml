@@ -1,4 +1,4 @@
-<server name="yii-cws-app" host="127.0.0.1" port="9015">
+<server host="127.0.0.1" port="9015">
     <name value="yii-cws-app" />
     <requestConcurrency value="100000"/>
     <instance>
