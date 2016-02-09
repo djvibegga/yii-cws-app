@@ -1,6 +1,6 @@
 .buildpath
-.project
-.cproject
+# .project
+# .cproject
 /.settings
 /nbproject
 /.idea

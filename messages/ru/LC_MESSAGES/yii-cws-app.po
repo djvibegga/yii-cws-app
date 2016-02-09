@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YII CWS APP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-08 21:17+0300\n"
-"PO-Revision-Date: 2016-02-08 21:18+0300\n"
+"POT-Creation-Date: 2016-02-09 14:12+0300\n"
+"PO-Revision-Date: 2016-02-09 14:13+0300\n"
 "Last-Translator: Eugeniy Marilev <djvibegga@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,25 +18,34 @@ msgstr ""
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: views\n"
 
-#: src/controllers/SiteController.cpp:139
-msgid "user is already logged... "
-msgstr "пользователь уже авторизован"
+#: src/controllers/PageController.cpp:91
+#, fuzzy
+msgid "Contacts Us"
+msgstr "Контакты"
 
-#: src/controllers/SiteController.cpp:141
+#: src/controllers/SiteController.cpp:132
+msgid "user is already logged...<br>"
+msgstr "пользователь уже авторизован...<br>"
+
+#: src/controllers/SiteController.cpp:134
 msgid "Logout"
 msgstr "Выйти"
 
-#: src/controllers/SiteController.cpp:148
+#: src/controllers/SiteController.cpp:141
 msgid "failure auth"
 msgstr "ошибка аутентификации"
 
-#: src/controllers/SiteController.cpp:152
+#: src/controllers/SiteController.cpp:145
 msgid "failure login"
 msgstr "ошибка входа"
 
-#: src/controllers/SiteController.cpp:193
+#: src/controllers/SiteController.cpp:163
 msgid "test {1}"
 msgstr "тест {1}"
+
+#: views/page/index.html:2
+msgid "Select page to view"
+msgstr "Выберите страницу для просмотра"
 
 #: views/site/index.html:1
 msgid "You are on the home page"
@@ -50,7 +59,7 @@ msgstr "Я сценарий \"site/cookies\"."
 msgid "Here is active cookie[sessid]"
 msgstr "Это активное значение cookie[sessid]"
 
-#: views/site/cookies.html:3
+#: views/site/cookies.html:4
 msgid "Note! Server has removed \"lang\" cookie."
 msgstr "Внимание! Сервер удалил куки \"lang\"."
 
@@ -66,17 +75,17 @@ msgstr "Это активный ID сессии"
 msgid "Here is active session data[key]"
 msgstr "Это активные данные сессии data[key]"
 
-#: views/site/db.html:2
-msgid "Select page to view"
-msgstr "Выберите страницу для просмотра"
+#: views/site/am.html:1
+msgid "I am \"site/am\" action."
+msgstr "Я сценарий \"site/am\"."
 
 #: views/site/login.html:1
 msgid "Welcome, "
-msgstr "Здравствуйте"
+msgstr "Здравствуйте, "
 
 #: views/layouts/main.html:26
-msgid "Asset Manager"
-msgstr "Менеджер ассетов"
+msgid "Assets"
+msgstr "Ресурсы"
 
 #: views/layouts/main.html:27
 msgid "Sessions"
@@ -91,26 +100,42 @@ msgid "Security"
 msgstr "Безопасность"
 
 #: views/layouts/main.html:30
-msgid "Database"
-msgstr "СУБД"
+msgid "i18n parameterized"
+msgstr "i18n с параметрами"
 
 #: views/layouts/main.html:31
-msgid "Contacts"
-msgstr "Контакты"
-
-#: views/layouts/main.html:32
-msgid "Translation with params"
-msgstr "Перевод с параметрами"
-
-#: views/layouts/main.html:33
 msgid "Bad Request Url"
 msgstr "Несуществующий адрес"
 
-#: views/layouts/main.html:37
+#: views/layouts/main.html:32
+#: views/layouts/main_simple.html:26
+msgid "Pages"
+msgstr "Страницы"
+
+#: views/layouts/main.html:33
+#: views/layouts/main_simple.html:27
+msgid "Contacts"
+msgstr "Контакты"
+
+#: views/layouts/main.html:34
+#: views/layouts/main_simple.html:28
+msgid "About"
+msgstr "О проекте"
+
+#: views/layouts/main.html:38
+#: views/layouts/main_simple.html:32
 msgid "Language"
 msgstr "Язык"
 
-#: views/layouts/main.html:49
+#: views/layouts/main.html:50
 msgid "Login"
 msgstr "Войти"
 
+#~ msgid "Asset Manager"
+#~ msgstr "Менеджер ассетов"
+
+#~ msgid "Translation with params"
+#~ msgstr "Перевод с параметрами"
+
+#~ msgid "Database"
+#~ msgstr "СУБД"

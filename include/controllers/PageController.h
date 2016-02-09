@@ -16,7 +16,9 @@ public:
 	PageController(CModule * parent);
 	virtual ~PageController();
 	void init();
+	void actionIndex(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 	void actionView(CHttpRequest * const request, CHttpResponse * response) throw (CException);
+	void actionContacts(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 };
 
 #endif /* PAGECONTROLLER_H_ */

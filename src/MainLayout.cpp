@@ -38,14 +38,19 @@ void MainLayout::run() throw (CException)
 	viewData["sessionsUrl"] = urlManager->createUrl("site/session");
 	viewData["cookiesUrl"] = urlManager->createUrl("site/cookies");
 	viewData["securityUrl"] = urlManager->createUrl("site/security");
-	viewData["dbUrl"] = urlManager->createUrl("site/db");
+	viewData["pagesUrl"] = urlManager->createUrl("page/index");
 	viewData["translateUrl"] = urlManager->createUrl("site/translate");
+	viewData["contactsUrl"] = urlManager->createUrl("page/contacts");
 
-	TRouteStruct contactsRoute;
-	contactsRoute.path = "page/view";
-	TActiveRecordPtr contactsPtr = Page::model()->findByName("Contacts Us");
-	contactsRoute.params["id"] = CStringUtils::fromULong(dynamic_cast<Page*>(contactsPtr.get())->id);
-	viewData["contactsUrl"] = urlManager->createUrl(contactsRoute);
+	TRouteStruct aboutRoute;
+	aboutRoute.path = "page/view";
+	TActiveRecordPtr aboutPtr = Page::model()->findByName("About project");
+	if (aboutPtr.get() == 0) {
+		aboutRoute.path = "nonexistedurl";
+	} else {
+		aboutRoute.params["id"] = CStringUtils::fromULong(dynamic_cast<Page*>(aboutPtr.get())->id);
+	}
+	viewData["aboutUrl"] = urlManager->createUrl(aboutRoute);
 
 	dynamic_cast<CClientScript*>(Cws::app()->getComponent("clientScript"))
 		->registerPackage("main");
@@ -67,8 +72,6 @@ void MainLayout::run() throw (CException)
 		lang["url"] = url;
 		viewData["langs"].PushBack(lang);
 	}
-
-	viewData["loginButton"] = "Login";
 
 	render(_viewName, viewData);
 }

@@ -43,9 +43,10 @@ CUrlManager * Application::createUrlManager()
 	CUrlManager * manager = CWebApplication::createUrlManager();
 	manager->addRule(new CUrlRule("site/index", "/"));
 	manager->addRule(new CUrlRule("site/am", "am"));
-	manager->addRule(new CUrlRule("site/db", "db"));
+	manager->addRule(new CUrlRule("page/index", "pages"));
 	manager->addRule(new PageUrlRule());
-	manager->addRule(new CUrlRule("page/view", "page/<name:\\w+>*"));
+	manager->addRule(new CUrlRule("page/view", "page/<id:\\d+>*"));
+	manager->addRule(new CUrlRule("page/contacts", "contacts"));
 	return manager;
 }
 

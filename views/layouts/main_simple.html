@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/x-icon" href="<TMPL_var assetsUrl>/img/favicon.png">
-    <title>YII CWS App</title>
+    <title>Contacts Layout</title>
 </head>
 <body>
     <div class="wrap-all main-body">
@@ -23,12 +23,6 @@
             
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                    <li><a href="<TMPL_var amUrl>"><TMPL_var gettext("Assets")></a></li>
-                    <li><a href="<TMPL_var sessionsUrl>"><TMPL_var gettext("Sessions")></a></li>
-                    <li><a href="<TMPL_var cookiesUrl>"><TMPL_var gettext("Cookies")></a></li>
-                    <li><a href="<TMPL_var securityUrl>"><TMPL_var gettext("Security")></a></li>
-                    <li><a href="<TMPL_var translateUrl>"><TMPL_var gettext("i18n parameterized")></a></li>
-                    <li><a href="<TMPL_var badRequestUrl>"><TMPL_var gettext("Bad Request Url")></a></li>
                     <li><a href="<TMPL_var pagesUrl>"><TMPL_var gettext("Pages")></a></li>
                     <li><a href="<TMPL_var contactsUrl>"><TMPL_var gettext("Contacts")></a></li>
                     <li><a href="<TMPL_var aboutUrl>"><TMPL_var gettext("About")></a></li>
@@ -46,9 +40,6 @@
 	                    </TMPL_foreach>
 				        </ul>
 			        </li>
-                    <li><a href="<TMPL_var loginUrl>">
-                        <TMPL_var gettext("Login")>
-                    </a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

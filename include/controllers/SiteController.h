@@ -21,7 +21,6 @@ public:
 	void actionSession(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 	void actionCookies(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 	void actionSecurity(CHttpRequest * const request, CHttpResponse * response) throw (CException);
-	void actionDb(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 	void actionTranslate(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 	void actionLogin(CHttpRequest * const request, CHttpResponse * response) throw (CException);
 	void actionLogout(CHttpRequest * const request, CHttpResponse * response) throw (CException);

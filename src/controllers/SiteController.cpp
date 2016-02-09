@@ -9,24 +9,18 @@
 #include <boost/assign.hpp>
 #include <base/Cws.h>
 #include <base/CSecurityManager.h>
-#include <db/CDbDataReader.h>
-#include <db/CDbCriteria.h>
-#include <db/schema/CDbCommandBuilder.h>
 #include <web/CAssetManager.h>
 #include <web/CClientScript.h>
 #include <web/CUrlManager.h>
 #include <web/CWebUser.h>
-#include <utils/CMap.h>
-#include <boost/assign/list_of.hpp>
 
 #include "MainLayout.h"
 #include "MyUserIdentity.h"
-#include "models/Page.h"
 
 SiteController::SiteController(CModule * parent)
 : CController("site", parent)
 {
-	setLayout(TViewPtr(new MainLayout(this)));
+	setDefaultLayout(TViewPtr(new MainLayout(this)));
 }
 
 SiteController::~SiteController()
@@ -43,7 +37,6 @@ void SiteController::init()
 	registerAction("login", ACTION(&SiteController::actionLogin));
 	registerAction("logout", ACTION(&SiteController::actionLogout));
 	registerAction("security", ACTION(&SiteController::actionSecurity));
-	registerAction("db", ACTION(&SiteController::actionDb));
 	registerAction("translate", ACTION(&SiteController::actionTranslate));
 }
 
@@ -136,7 +129,7 @@ void SiteController::actionLogin(CHttpRequest * const request, CHttpResponse * r
 	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(Cws::app()->getComponent("urlManager"));
 
 	if (!user->getIsGuest()) {
-		*response << _t("user is already logged... ")
+		*response << _t("user is already logged...<br>")
 				  << _("<a href=\"") << urlManager->createUrl("site/logout") << _("\">")
 				  << _t("Logout")
 				  << _("</a>");
@@ -163,29 +156,6 @@ void SiteController::actionLogout(CHttpRequest * const request, CHttpResponse * 
 	CWebUser * user = dynamic_cast<CWebUser*>(Cws::app()->getComponent("user"));
 	user->logout();
 	response->redirect("/");
-}
-
-void SiteController::actionDb(CHttpRequest * const request, CHttpResponse * response) throw (CException)
-{
-	CDbCriteria criteria;
-	CDT viewData, page;
-	CApplication * app = Cws::app();
-	CUrlManager * urlManager = dynamic_cast<CUrlManager*>(app->getComponent("urlManager"));
-	TActiveRecordList pages = Page::model()->findAll(criteria);
-
-    viewData["pages"] = CDT();
-    for (TActiveRecordList::iterator iter = pages.begin(); iter != pages.end(); ++iter) {
-    	Page * item = dynamic_cast<Page*>(iter->get());
-    	page["id"] = item->id;
-    	page["name"] = item->name;
-    	page["url"] = urlManager->createUrl(item->url);
-    	viewData["pages"].PushBack(page);
-    }
-
-	viewData["assetsUrl"] = dynamic_cast<CAssetManager*>(app->getComponent("assetManager"))
-		->getPublishedUrl(Cws::getPathOfAlias("application.assets"));
-
-	render("db", viewData);
 }
 
 void SiteController::actionTranslate(CHttpRequest * const request, CHttpResponse * response) throw (CException)
